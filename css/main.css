@@ -1,0 +1,126 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    background: url('https://i.pinimg.com/736x/06/71/ee/0671ee6459324a4fb4c64dc8d60de78b.jpg') no-repeat center center fixed;
+    background-size: cover;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+/* Background Overlay */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+    backdrop-filter: blur(8px); /* Apply blur effect */
+    z-index: -1; /* Place behind content */
+}
+
+h1, h4 {
+    text-align: center;
+    color: inherit;
+}
+
+.theme-switcher {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.theme-switcher label {
+    margin-right: 10px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent background for glass effect */
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.search-bar input[type="text"], .search-bar select {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #2b2b2b;
+    color: #e0e0e0;
+    margin: 10px 0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.book {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.book img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.book-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #e0e0e0;
+    padding: 10px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.book:hover .book-info {
+    transform: translateY(0);
+}
+
+/* Dark Theme Styles */
+body.dark-mode {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .search-bar {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    .book-info {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .book-info {
+        padding: 6px;
+        font-size: 0.9em;
+    }
+}
