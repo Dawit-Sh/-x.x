@@ -44,6 +44,7 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
         .book img {
             width: 100%;
@@ -87,25 +88,6 @@
             }
         }
     </style>
-    <script>
-        function searchBooks() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let filter = document.getElementById('filterSelect').value;
-            let books = document.getElementsByClassName('book');
-            
-            for (let i = 0; i < books.length; i++) {
-                let title = books[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
-                let author = books[i].getElementsByTagName('p')[0].innerText.toLowerCase();
-                let genre = books[i].getAttribute('data-genre');
-                
-                if ((title.includes(input) || author.includes(input)) && (filter === 'all' || genre === filter)) {
-                    books[i].style.display = '';
-                } else {
-                    books[i].style.display = 'none';
-                }
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>λx.x</h1>
@@ -121,28 +103,28 @@
 
     <h1>Currently Reading</h1>
     <div class="gallery">
-        <div class="book" data-genre="fiction">
+        <div class="book" data-genre="fiction" onclick="location.href='reviews/fiction/icefields.html'">
             <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg" alt="Icefields">
             <div class="book-info">
                 <h2>Icefields</h2>
                 <p>Thomas Wharton</p>
             </div>
         </div>
-         <div class="book" data-genre="fiction">
+        <div class="book" data-genre="fiction" onclick="location.href='the-natural.html'">
             <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1701045096i/685.jpg" alt="The Natural">
             <div class="book-info">
                 <h2>The Natural</h2>
                 <p>Bernard Malamud</p>
             </div>
         </div>
-        <div class="book" data-genre="non-fiction">
+        <div class="book" data-genre="non-fiction" onclick="location.href='endurance-shackletons-incredible-voyage.html'">
             <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1391329559i/139069.jpg" alt="Endurance: Shackleton's Incredible Voyage">
             <div class="book-info">
                 <h2>Endurance: Shackleton's Incredible Voyage</h2>
                 <p>Alfred Lansing</p>
             </div>
         </div>
-        <div class="book" data-genre="non-fiction">
+        <div class="book" data-genre="non-fiction" onclick="location.href='myth-of-the-rational-voter.html'">
             <img src="https://m.media-amazon.com/images/I/71jP7Z+JsGL._AC_UF1000,1000_QL80_.jpg" alt="The Myth of the Rational Voter: Why Democracies Choose Bad Policies">
             <div class="book-info">
                 <h2>The Myth of the Rational Voter: Why Democracies Choose Bad Policies</h2>
@@ -153,7 +135,7 @@
 
     <h1>Finished</h1>
     <div class="gallery">
-       <h3>Your MOM </h3>
+        <h3>Your MOM </h3>
     </div>
 </body>
 </html>

@@ -1,0 +1,90 @@
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-image: url('https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+}
+
+.review-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
+    border-radius: 8px;
+    backdrop-filter: blur(10px); /* Blurred glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007BFF;
+}
+
+.review {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.review img {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 10px; 
+    margin-right: 15px; 
+}
+
+.review-text {
+    max-width: 600px;
+}
+
+.stars {
+    color: #FFD700;
+    font-size: 1.2em;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .review img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .review-text {
+        max-width: 100%; 
+    }
+
+    .stars {
+        font-size: 1em; 
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px; 
+    }
+
+    .review img {
+        width: 50px; 
+        height: 50px;
+    }
+
+    .review-text {
+        font-size: 0.9em; 
+    }
+
+    .stars {
+        font-size: 0.9em; 
+    }
+}
