@@ -18,11 +18,12 @@ h1 {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
+    background: rgba(0, 0, 0, 0.6); /* Black semi-transparent background */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Black semi-transparent border */
     border-radius: 8px;
     backdrop-filter: blur(10px); /* Blurred glass effect */
     -webkit-backdrop-filter: blur(10px); /* For Safari */
+    color: #fff; /* Text color to ensure readability */
 }
 
 a {
