@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   let isLoading = false;
   let finishedPage = 4; // Start after the first 4 books
+  let allBooks = {}; // Store all books to filter later
 
   function loadBooks() {
     if (isLoading) return;
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
       })
       .then((data) => {
+        allBooks = data; // Store loaded books
         populateBooks("currentlyReading", data.currentlyReading);
         populateBooks("finished", data.finished.slice(0, 4)); // Load the first 4 books
         isLoading = false;
@@ -31,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Clear existing content
+    section.innerHTML = "";
+
     books.forEach((book) => {
       const bookDiv = document.createElement("div");
       bookDiv.className = "book";
@@ -47,6 +52,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
       section.appendChild(bookDiv);
     });
+  }
+
+  function searchBooks() {
+    const searchInput = document
+      .getElementById("searchInput")
+      .value.toLowerCase();
+    const filterSelect = document.getElementById("filterSelect").value;
+
+    const filteredCurrentlyReading = allBooks.currentlyReading.filter(
+      (book) => {
+        return (
+          (filterSelect === "all" || book.genre === filterSelect) &&
+          (book.title.toLowerCase().includes(searchInput) ||
+            book.author.toLowerCase().includes(searchInput))
+        );
+      }
+    );
+
+    const filteredFinished = allBooks.finished.filter((book) => {
+      return (
+        (filterSelect === "all" || book.genre === filterSelect) &&
+        (book.title.toLowerCase().includes(searchInput) ||
+          book.author.toLowerCase().includes(searchInput))
+      );
+    });
+
+    populateBooks("currentlyReading", filteredCurrentlyReading);
+    populateBooks("finished", filteredFinished.slice(0, finishedPage)); // Show filtered results
   }
 
   function showMoreBooks() {
@@ -67,6 +100,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error loading more books:", error);
       });
   }
+
+  // Attach the event listener to the search bar
+  document.getElementById("searchInput").addEventListener("keyup", searchBooks);
+  document
+    .getElementById("filterSelect")
+    .addEventListener("change", searchBooks);
 
   // Attach the click event listener to the Show More button
   document
