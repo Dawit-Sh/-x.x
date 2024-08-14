@@ -124,3 +124,18 @@ body.dark-mode .search-bar {
         font-size: 0.9em;
     }
 }
+#showMoreButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#showMoreButton:hover {
+    background-color: #666;
+}

@@ -1,54 +1,78 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("books.json")
-    .then((response) => response.json())
-    .then((data) => {
-      populateBooks("currentlyReading", data.currentlyReading);
-      populateBooks("finished", data.finished);
-    });
-});
+  let isLoading = false;
+  let finishedPage = 4; // Start after the first 4 books
 
-function populateBooks(sectionId, books) {
-  const section = document.getElementById(sectionId);
-  section.innerHTML = ""; // Clear existing content
+  function loadBooks() {
+    if (isLoading) return;
+    isLoading = true;
 
-  books.forEach((book) => {
-    const bookDiv = document.createElement("div");
-    bookDiv.className = "book";
-    bookDiv.dataset.genre = book.genre;
-    bookDiv.onclick = () => (location.href = book.url);
+    fetch("books.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        populateBooks("currentlyReading", data.currentlyReading);
+        populateBooks("finished", data.finished.slice(0, 4)); // Load the first 4 books
+        isLoading = false;
+      })
+      .catch((error) => {
+        console.error("Error loading books:", error);
+        isLoading = false;
+      });
+  }
 
-    bookDiv.innerHTML = `
-                    <img src="${book.image}" alt="${book.title}">
-                    <div class="book-info">
-                        <h2>${book.title}</h2>
-                        <p>${book.author}</p>
-                    </div>
-                `;
-
-    section.appendChild(bookDiv);
-  });
-}
-
-function searchBooks() {
-  const searchInput = document
-    .getElementById("searchInput")
-    .value.toLowerCase();
-  const filterSelect = document.getElementById("filterSelect").value;
-  const books = document.querySelectorAll(".book");
-
-  books.forEach((book) => {
-    const title = book.querySelector("h2").textContent.toLowerCase();
-    const author = book.querySelector("p").textContent.toLowerCase();
-    const genre = book.getAttribute("data-genre");
-
-    const matchesSearch =
-      title.includes(searchInput) || author.includes(searchInput);
-    const matchesFilter = filterSelect === "all" || filterSelect === genre;
-
-    if (matchesSearch && matchesFilter) {
-      book.style.display = "";
-    } else {
-      book.style.display = "none";
+  function populateBooks(sectionId, books) {
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      console.error(`Section with id ${sectionId} not found`);
+      return;
     }
-  });
-}
+
+    books.forEach((book) => {
+      const bookDiv = document.createElement("div");
+      bookDiv.className = "book";
+      bookDiv.dataset.genre = book.genre;
+      bookDiv.onclick = () => (location.href = book.url);
+
+      bookDiv.innerHTML = `
+        <img src="${book.image}" alt="${book.title}">
+        <div class="book-info">
+          <h2>${book.title}</h2>
+          <p>${book.author}</p>
+        </div>
+      `;
+
+      section.appendChild(bookDiv);
+    });
+  }
+
+  function showMoreBooks() {
+    fetch("books.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const additionalBooks = data.finished.slice(
+          finishedPage,
+          finishedPage + 4
+        ); // Load 4 more books
+        populateBooks("finished", additionalBooks);
+        finishedPage += 4;
+        if (finishedPage >= data.finished.length) {
+          document.getElementById("showMoreButton").style.display = "none";
+        }
+      })
+      .catch((error) => {
+        console.error("Error loading more books:", error);
+      });
+  }
+
+  // Attach the click event listener to the Show More button
+  document
+    .getElementById("showMoreButton")
+    .addEventListener("click", showMoreBooks);
+
+  // Initial load of books
+  loadBooks();
+});
