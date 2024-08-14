@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         allBooks = data; // Store loaded books
         populateBooks("currentlyReading", data.currentlyReading);
         populateBooks("finished", data.finished.slice(0, 4)); // Load the first 4 books
+        populateBooks("upcomingShelf", data.upcoming, true); // Load upcoming books with blur
         isLoading = false;
       })
       .catch((error) => {
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  function populateBooks(sectionId, books) {
+  function populateBooks(sectionId, books, isBlurred = false) {
     const section = document.getElementById(sectionId);
     if (!section) {
       console.error(`Section with id ${sectionId} not found`);
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     books.forEach((book) => {
       const bookDiv = document.createElement("div");
-      bookDiv.className = "book";
+      bookDiv.className = isBlurred ? "book blurred" : "book";
       bookDiv.dataset.genre = book.genre;
       bookDiv.onclick = () => (location.href = book.url);
 
@@ -78,8 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
 
+    const filteredUpcoming = allBooks.upcoming.filter((book) => {
+      return (
+        (filterSelect === "all" || book.genre === filterSelect) &&
+        (book.title.toLowerCase().includes(searchInput) ||
+          book.author.toLowerCase().includes(searchInput))
+      );
+    });
+
     populateBooks("currentlyReading", filteredCurrentlyReading);
     populateBooks("finished", filteredFinished.slice(0, finishedPage)); // Show filtered results
+    populateBooks("upcomingShelf", filteredUpcoming, true); // Show filtered upcoming books
   }
 
   function showMoreBooks() {
