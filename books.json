@@ -40,10 +40,130 @@
   ],
   "upcoming": [
     {
-      "title": "The Myth of the Rational Voter: Why Democracies Choose Bad Policies",
-      "author": "Bryan Caplan",
-      "image": "https://m.media-amazon.com/images/I/71jP7Z+JsGL._AC_UF1000,1000_QL80_.jpg",
+      "title": "Blindsight",
+      "author": "Peter Watts",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924412i/48484.jpg",
       "url": "#"
-    } 
-  ]
+    },
+    {
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "author": "Robert Louis Stevenson",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1318116526i/51496.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Anthem",
+      "author": "Ayn Rand",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441051876i/5460367.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Road",
+      "author": "Cormac McCarthy",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1600241424i/6288.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Wuthering Heights ",
+      "author": "Emily Bronte",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320404408i/507157.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Written Lives",
+      "author": "Javier Maras",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348935247i/982903.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Maniac",
+      "author": "Benjamín Labatut",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1679411721i/75665931.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Devil in the White City: Murder, Magic, and Madness at the Fair That Changed America",
+      "author": "Erik Larson",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1583433024i/397483.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Lost City of Z: A Tale of Deadly Obsession in the Amazon",
+      "author": "David Grann",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320487318i/3398625.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Rigor of Angels: Borges, Heisenberg, Kant, and the Ultimate Nature of Reality",
+      "author": "William Egginton",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684816550i/63946909.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Notes on Complexity: A Scientific Theory of Connection, Consciousness, and Being",
+      "author": "Neil Theise",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1673876917i/62686859.jpg",
+      "url": "#"
+    },
+    {
+      "title": "A Terribly Serious Adventure: Philosophy and War at Oxford, 1900-1960",
+      "author": "Nikhil Krishnan",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684815208i/62926808.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Devil's Best Trick: How the Face of Evil Disappeared",
+      "author": "Randall Sullivan",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711566545i/197525363.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Murder of Professor Schlick: The Rise and Fall of the Vienna Circle",
+      "author": "David Edmonds",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1590794971i/52579167.jpg",
+      "url": "#"
+    },
+    {
+      "title": "I've Been Thinking",
+      "author": "Daniel C. Dennett",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1676788347i/77264999.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Visionaries: Arendt, Beauvoir, Rand, Weil, and the Power of Philosophy in Dark Times",
+      "author": "Wolfram Eilenberger",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1680672149i/125076611.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Judgment at Tokyo: World War II on Trial and the Making of Modern Asia",
+      "author": "Gary J. Bass",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1688421145i/75596597.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Sea, the Sea",
+      "author": "Iris Murdoch",
+      "genre": "#",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1302898449i/11229.jpg",
+      "url": "#"
+    }
+  ]   
 }
