@@ -1,0 +1,25 @@
+{
+  "title": "The Natural",
+  "author": "Bernard Malamud",
+  "description": "a gifted baseball player seeks redemption and grapples with his own flaws as he attempts to make a comeback and reclaim his lost potential.",
+  "reviews": [
+    {
+      "name": "Abrham",
+      "icon": "https://i.pinimg.com/736x/73/39/3b/73393b9d7b21471dc4856e3688ff10a1.jpg",
+      "rating": 5,
+      "review": "I think i love fiction cause i own it"
+    },
+    {
+      "name": "Dawit",
+      "icon": "https://i.pinimg.com/736x/8e/81/93/8e819300bb2e66793c884202806af384.jpg",
+      "rating": 1,
+      "review": "fuckin hell"
+    },
+    {
+      "name": "Nahom",
+      "icon": "https://i.pinimg.com/736x/b7/72/bb/b772bb80f365ff7fa3d2fb038854ec89.jpg",
+      "rating": 3,
+      "review": "I Still claim I am social student."
+    }
+  ]
+}

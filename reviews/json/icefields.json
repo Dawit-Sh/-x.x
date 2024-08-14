@@ -1,0 +1,25 @@
+{
+  "title": "Icefields",
+  "author": "Thomas Wharton",
+  "description": "Icefields is a fascinating novel set in the icy wilderness of Canada. The story explores themes of survival, nature, and human perseverance.",
+  "reviews": [
+    {
+      "name": "Abrham",
+      "icon": "https://i.pinimg.com/736x/73/39/3b/73393b9d7b21471dc4856e3688ff10a1.jpg",
+      "rating": 1,
+      "review": "I hate fiction"
+    },
+    {
+      "name": "Dawit",
+      "icon": "https://i.pinimg.com/736x/8e/81/93/8e819300bb2e66793c884202806af384.jpg",
+      "rating": 5,
+      "review": "I love fiction."
+    },
+    {
+      "name": "Nahom",
+      "icon": "https://i.pinimg.com/736x/b7/72/bb/b772bb80f365ff7fa3d2fb038854ec89.jpg",
+      "rating": 3,
+      "review": "I am social student."
+    }
+  ]
+}

@@ -19,67 +19,16 @@
             <option value="non-fiction">Non-Fiction</option>
         </select>
     </div>
-
+                
     <h1>Currently Reading</h1>
-    <div class="gallery">
-        <!-- Book items -->
-        <div class="book" data-genre="fiction" onclick="location.href='reviews/fiction/icefields.html'">
-            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg" alt="Icefields">
-            <div class="book-info">
-                <h2>Icefields</h2>
-                <p>Thomas Wharton</p>
-            </div>
-        </div>
-        <div class="book" data-genre="fiction" onclick="location.href='the-natural.html'">
-            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1701045096i/685.jpg" alt="The Natural">
-            <div class="book-info">
-                <h2>The Natural</h2>
-                <p>Bernard Malamud</p>
-            </div>
-        </div>
-        <div class="book" data-genre="non-fiction" onclick="location.href='endurance-shackletons-incredible-voyage.html'">
-            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1391329559i/139069.jpg" alt="Endurance: Shackleton's Incredible Voyage">
-            <div class="book-info">
-                <h2>Endurance: Shackleton's Incredible Voyage</h2>
-                <p>Alfred Lansing</p>
-            </div>
-        </div>
-        <div class="book" data-genre="non-fiction" onclick="location.href='myth-of-the-rational-voter.html'">
-            <img src="https://m.media-amazon.com/images/I/71jP7Z+JsGL._AC_UF1000,1000_QL80_.jpg" alt="The Myth of the Rational Voter: Why Democracies Choose Bad Policies">
-            <div class="book-info">
-                <h2>The Myth of the Rational Voter: Why Democracies Choose Bad Policies</h2>
-                <p>Bryan Caplan</p>
-            </div>
-        </div>
+    <div id="currentlyReading" class="gallery">
+        <!-- current -->
     </div>
 
     <h1>Finished</h1>
-    <div class="gallery">
-        <h3>Your MOM </h3>
-        <p>senpaiii</p>
+    <div id="finished" class="gallery">
+        <!-- finished  -->
     </div>
-
-    <script>
-        function searchBooks() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const filterSelect = document.getElementById('filterSelect').value;
-            const books = document.querySelectorAll('.book');
-
-            books.forEach(book => {
-                const title = book.querySelector('h2').textContent.toLowerCase();
-                const author = book.querySelector('p').textContent.toLowerCase();
-                const genre = book.getAttribute('data-genre');
-
-                const matchesSearch = title.includes(searchInput) || author.includes(searchInput);
-                const matchesFilter = filterSelect === 'all' || filterSelect === genre;
-
-                if (matchesSearch && matchesFilter) {
-                    book.style.display = '';
-                } else {
-                    book.style.display = 'none';
-                }
-            });
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

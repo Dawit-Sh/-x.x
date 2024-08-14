@@ -1,0 +1,41 @@
+{
+  "currentlyReading": [
+    {
+      "title": "Icefields",
+      "author": "Thomas Wharton",
+      "genre": "fiction",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg",
+      "url": "reviews/review.html?book=icefields"
+    },
+    {
+      "title": "The Natural",
+      "author": "Bernard Malamud",
+      "genre": "fiction",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1701045096i/685.jpg",
+      "url": "reviews/review.html?book=thenatural"
+    },
+    {
+      "title": "Endurance: Shackleton's Incredible Voyage",
+      "author": "Alfred Lansing",
+      "genre": "non-fiction",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1391329559i/139069.jpg",
+      "url": "reviews/review.html?book=enduranceshackleton"
+    },
+    {
+      "title": "The Myth of the Rational Voter: Why Democracies Choose Bad Policies",
+      "author": "Bryan Caplan",
+      "genre": "non-fiction",
+      "image": "https://m.media-amazon.com/images/I/71jP7Z+JsGL._AC_UF1000,1000_QL80_.jpg",
+      "url": "reviews/review.html?book=rationalvoter"
+    }
+  ],
+  "finished": [
+    {
+      "title": "Your MOM",
+      "author": "-",
+      "genre": "fiction",
+      "image": "https://i.pinimg.com/736x/27/4d/91/274d9108bc2e8da1be97369cea7990d2.jpg",
+      "url": "#"
+    }
+  ]
+}
