@@ -61,36 +61,51 @@ document.addEventListener("DOMContentLoaded", function () {
       .value.toLowerCase();
     const filterSelect = document.getElementById("filterSelect").value;
 
+    // Filter for Currently Reading
     const filteredCurrentlyReading = allBooks.currentlyReading.filter(
       (book) => {
-        return (
-          (filterSelect === "all" || book.genre === filterSelect) &&
-          (book.title.toLowerCase().includes(searchInput) ||
-            book.author.toLowerCase().includes(searchInput))
-        );
+        const matchesFilter =
+          filterSelect === "all" || book.genre === filterSelect;
+        const matchesSearch =
+          book.title.toLowerCase().includes(searchInput) ||
+          book.author.toLowerCase().includes(searchInput) ||
+          (book.suggested &&
+            book.suggested.toLowerCase().includes(searchInput));
+
+        return matchesFilter && matchesSearch;
       }
     );
 
+    // Filter for Finished
     const filteredFinished = allBooks.finished.filter((book) => {
-      return (
-        (filterSelect === "all" || book.genre === filterSelect) &&
-        (book.title.toLowerCase().includes(searchInput) ||
-          book.author.toLowerCase().includes(searchInput))
-      );
+      const matchesFilter =
+        filterSelect === "all" || book.genre === filterSelect;
+      const matchesSearch =
+        book.title.toLowerCase().includes(searchInput) ||
+        book.author.toLowerCase().includes(searchInput) ||
+        (book.suggested && book.suggested.toLowerCase().includes(searchInput));
+
+      return matchesFilter && matchesSearch;
     });
 
+    // Filter for Upcoming Shelf
     const filteredUpcoming = allBooks.upcoming.filter((book) => {
-      return (
-        (filterSelect === "all" || book.genre === filterSelect) &&
-        (book.title.toLowerCase().includes(searchInput) ||
-          book.author.toLowerCase().includes(searchInput))
-      );
+      const matchesFilter =
+        filterSelect === "all" || book.genre === filterSelect;
+      const matchesSearch =
+        book.title.toLowerCase().includes(searchInput) ||
+        book.author.toLowerCase().includes(searchInput) ||
+        (book.suggested && book.suggested.toLowerCase().includes(searchInput));
+
+      return matchesFilter && matchesSearch;
     });
 
+    // Populate books for each section
     populateBooks("currentlyReading", filteredCurrentlyReading);
     populateBooks("finished", filteredFinished.slice(0, finishedPage)); // Show filtered results
     populateBooks("upcomingShelf", filteredUpcoming, true); // Show filtered upcoming books
   }
+
 
   function showMoreBooks() {
     fetch("books.json")
