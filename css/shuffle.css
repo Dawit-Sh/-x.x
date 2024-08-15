@@ -1,0 +1,146 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: url('https://i.pinimg.com/564x/d8/c2/a6/d8c2a648fda805b5610c9b1eb907a221.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+}
+
+.book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px 0;
+    perspective: 1000px;
+}
+
+.book {
+    width: 150px;
+    height: 220px;
+    margin: 10px;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeIn 0.5s forwards ease-in-out;
+}
+
+.book img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.6s ease-in-out;
+    transform-origin: center right;
+}
+
+.shuffling img {
+    animation: shuffle 1s infinite alternate;
+}
+
+@keyframes shuffle {
+    0% { transform: translateX(0) rotateY(0); }
+    100% { transform: translateX(10px) rotateY(-20deg); }
+}
+
+@keyframes fadeIn {
+    100% { opacity: 1; transform: scale(1); }
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+    z-index: 1;
+    font-size: clamp(18px, 4vw, 24px);
+}
+
+#bookCount {
+    font-size: clamp(16px, 3vw, 20px);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: clamp(14px, 2.5vw, 16px);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.3s ease;
+    flex: 1 1 auto;
+    min-width: 120px;
+    max-width: 200px;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .book-container {
+        justify-content: space-around;
+    }
+
+    .book {
+        width: calc(33.33% - 20px);
+        height: auto;
+        aspect-ratio: 2/3;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .book {
+        width: calc(50% - 10px);
+        height: auto;
+        aspect-ratio: 2/3;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    button {
+        width: 100%;
+        max-width: none;
+    }
+}
