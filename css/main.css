@@ -105,6 +105,40 @@ body.dark-mode .search-bar {
     background: rgba(0, 0, 0, 0.6);
 }
 
+/* Button Styles */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    margin: 20px 0;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+}
+
+.button-container .show-more-button {
+    background-color: #444;
+}
+
+.button-container .show-more-button:hover {
+    background-color: #666;
+}
+
+.button-container .shuffle-button {
+    background-color: #555;
+}
+
+.button-container .shuffle-button:hover {
+    background-color: #777;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .gallery {
@@ -124,24 +158,9 @@ body.dark-mode .search-bar {
         font-size: 0.9em;
     }
 }
-#showMoreButton {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #444;
-    color: #e0e0e0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 
-#showMoreButton:hover {
-    background-color: #666;
-}
 .gallery .blurred {
     filter: blur(9px); /* Reduced blur level */
     opacity: 0.8;
     transition: none; /* Remove the hover transition */
 }
-

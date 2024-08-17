@@ -26,16 +26,23 @@
     </div>
 
     <h1>Upcoming Shelf</h1>
-    <a href="shuffle.html"><button id="showMoreButton">Shuffle</button></a>
-    <div id="upcomingShelf" class="gallery">
+<div class="button-container">
+    <a href="shuffle.html"><button id="shuffleButton" class="shuffle-button">Shuffle</button></a>
+    <button id="showMoreUpcomingButton" class="show-more-button">Show More</button>
+</div>
+<div id="upcomingShelf" class="gallery">
     <!-- Upcoming books will be loaded here with a blurred effect -->
-    </div> 
+</div>
 
     <h1>Finished</h1>
-    <div id="finished" class="gallery">
-    <!-- Finished books will be loaded here -->
-    </div>
-    <button id="showMoreButton">Show More</button>
+<div class="button-container">
+    <button id="showMoreFinishedButton" class="show-more-button">Show More</button>
+</div>
+<div id="finished" class="gallery">
+    <!-- Finished books will be loaded here -->     
+</div>
+
+
     <script src="js/main.js"></script>
 
 </body>

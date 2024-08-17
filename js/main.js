@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   let isLoading = false;
-  let finishedPage = 4; // Start after the first 4 books
+  let finishedPage = 8; // Start after the first 8 books
+  let upcomingPage = 8; // Start after the first 8 upcoming books
   let allBooks = {}; // Store all books to filter later
 
   function loadBooks() {
@@ -17,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         allBooks = data; // Store loaded books
         populateBooks("currentlyReading", data.currentlyReading);
-        populateBooks("finished", data.finished.slice(0, 4)); // Load the first 4 books
-        populateBooks("upcomingShelf", data.upcoming, true); // Load upcoming books with blur
+        populateBooks("finished", data.finished.slice(0, 8)); // Load the first 8 books
+        populateBooks("upcomingShelf", data.upcoming.slice(0, 8), true); // Load the first 8 upcoming books with blur
         isLoading = false;
       })
       .catch((error) => {
@@ -103,22 +104,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // Populate books for each section
     populateBooks("currentlyReading", filteredCurrentlyReading);
     populateBooks("finished", filteredFinished.slice(0, finishedPage)); // Show filtered results
-    populateBooks("upcomingShelf", filteredUpcoming, true); // Show filtered upcoming books
+    populateBooks(
+      "upcomingShelf",
+      filteredUpcoming.slice(0, upcomingPage),
+      true
+    ); // Show filtered upcoming books
   }
 
-
-  function showMoreBooks() {
+  function showMoreBooks(sectionId, page) {
     fetch("books.json")
       .then((response) => response.json())
       .then((data) => {
-        const additionalBooks = data.finished.slice(
-          finishedPage,
-          finishedPage + 4
-        ); // Load 4 more books
-        populateBooks("finished", additionalBooks);
-        finishedPage += 4;
-        if (finishedPage >= data.finished.length) {
-          document.getElementById("showMoreButton").style.display = "none";
+        const section = document.getElementById(sectionId);
+        if (sectionId === "finished") {
+          const additionalBooks = data.finished.slice(page, page + 8); // Load 8 more books
+          populateBooks("finished", additionalBooks);
+          finishedPage += 8;
+          if (finishedPage >= data.finished.length) {
+            document.getElementById("showMoreFinishedButton").style.display =
+              "none";
+          }
+        } else if (sectionId === "upcomingShelf") {
+          const additionalBooks = data.upcoming.slice(page, page + 8); // Load 8 more upcoming books
+          populateBooks("upcomingShelf", additionalBooks, true);
+          upcomingPage += 8;
+          if (upcomingPage >= data.upcoming.length) {
+            document.getElementById("showMoreUpcomingButton").style.display =
+              "none";
+          }
         }
       })
       .catch((error) => {
@@ -132,10 +145,16 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("filterSelect")
     .addEventListener("change", searchBooks);
 
-  // Attach the click event listener to the Show More button
+  // Attach the click event listener to the Show More buttons
   document
-    .getElementById("showMoreButton")
-    .addEventListener("click", showMoreBooks);
+    .getElementById("showMoreFinishedButton")
+    .addEventListener("click", () => showMoreBooks("finished", finishedPage));
+
+  document
+    .getElementById("showMoreUpcomingButton")
+    .addEventListener("click", () =>
+      showMoreBooks("upcomingShelf", upcomingPage)
+    );
 
   // Initial load of books
   loadBooks();
