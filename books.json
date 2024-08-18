@@ -1,14 +1,6 @@
 {
   "currentlyReading": [
     {
-      "title": "Icefields",
-      "author": "Thomas Wharton",
-      "genre": "fiction",
-      "suggested": "Dawit",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg",
-      "url": "reviews/review.html?book=icefields"
-    },
-    {
       "title": "The Natural",
       "author": "Bernard Malamud",
       "genre": "fiction",
@@ -35,11 +27,12 @@
   ],
   "finished": [
     {
-      "title": "Your MOM",
-      "author": "-",
+      "title": "Icefields",
+      "author": "Thomas Wharton",
       "genre": "fiction",
-      "image": "https://i.pinimg.com/736x/27/4d/91/274d9108bc2e8da1be97369cea7990d2.jpg",
-      "url": "#"
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg",
+      "url": "reviews/review.html?book=icefields"
     }
   ],
   "upcoming": [
