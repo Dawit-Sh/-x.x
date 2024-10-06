@@ -1,5 +1,37 @@
 {
   "currentlyReading": [
+    {
+      "title": "Every Man for Himself and God Against All: A Memoir",
+      "author": "Werner Herzog",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685352349i/78292253.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Psychology of Gratitude",
+      "author": "Robert A. Emmons",
+      "genre": "#",
+      "suggested": "Nahom",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347245517i/1802705.jpg",
+      "url": "#"
+    },
+    {
+      "title": "No More Morals: The Sexual Revolution",
+      "author": "Lester C. Graham",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1608798705i/56397025.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Evil Under the Sun",
+      "author": "Agatha Christie",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386922974i/16305.jpg",
+      "url": "#"
+    }
   ],
   "finished": [
     {
@@ -90,14 +122,6 @@
       "genre": "#",
       "suggested": "Dawit",
       "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1679411721i/75665931.jpg",
-      "url": "#"
-    },
-    {
-      "title": "The Devil in the White City: Murder, Magic, and Madness at the Fair That Changed America",
-      "author": "Erik Larson",
-      "genre": "#",
-      "suggested": "Dawit",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1583433024i/397483.jpg",
       "url": "#"
     },
     {
@@ -285,14 +309,6 @@
       "url": "#"
     },
     {
-      "title": "Every Man for Himself and God Against All: A Memoir",
-      "author": "Werner Herzog",
-      "genre": "#",
-      "suggested": "Dawit",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685352349i/78292253.jpg",
-      "url": "#"
-    },
-    {
       "title": "The Evolution Of Desire: Strategies of Human Mating",
       "author": "David M. Buss",
       "genre": "#",
@@ -309,27 +325,11 @@
       "url": "#"
     },
     {
-      "title": "No More Morals: The Sexual Revolution",
-      "author": "Lester C. Graham",
-      "genre": "#",
-      "suggested": "Abrham",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1608798705i/56397025.jpg",
-      "url": "#"
-    },
-    {
       "title": "The ocean adventure: Science explores the depths of the sea",
       "author": "Gardner Soule",
       "genre": "#",
       "suggested": "Abrham",
       "image": "https://i.pinimg.com/564x/2f/6c/b8/2f6cb8ac3c35a2649d5f073113ec7486.jpg",
-      "url": "#"
-    },
-    {
-      "title": "Evil Under the Sun",
-      "author": "Agatha Christie",
-      "genre": "#",
-      "suggested": "Abrham",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386922974i/16305.jpg",
       "url": "#"
     },
     {
@@ -378,14 +378,6 @@
       "genre": "#",
       "suggested": "Nahom",
       "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1666970692i/52028992.jpg",
-      "url": "#"
-    },
-    {
-      "title": "The Psychology of Gratitude",
-      "author": "Robert A. Emmons",
-      "genre": "#",
-      "suggested": "Nahom",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347245517i/1802705.jpg",
       "url": "#"
     },
     {
