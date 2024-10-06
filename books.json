@@ -51,21 +51,20 @@
       "url": "reviews/review.html?book=thenatural"
     },
     {
-      "title": "Endurance: Shackleton's Incredible Voyage",
-      "author": "Alfred Lansing",
-      "genre": "non-fiction",
-      "suggested": "Dawit",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1391329559i/139069.jpg",
-      "url": "reviews/review.html?book=enduranceshackleton"
-    },
-    {
       "title": "The Myth of the Rational Voter: Why Democracies Choose Bad Policies",
       "author": "Bryan Caplan",
       "genre": "non-fiction",
       "suggested": "Nahom",
       "image": "https://m.media-amazon.com/images/I/71jP7Z+JsGL._AC_UF1000,1000_QL80_.jpg",
       "url": "reviews/review.html?book=rationalvoter"
-    }
+    },
+    {
+      "title": "Good Benito",
+      "author": "Alan Lightman",
+      "genre": "fiction",
+      "suggested": "Dawit", 
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474828794i/3469501.jpg"
+    }  
   ],
   "upcoming": [
     {
@@ -75,6 +74,14 @@
       "suggested": "Abrham",
       "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924412i/48484.jpg",
       "url": "#"
+    },
+    {
+      "title": "Endurance: Shackleton's Incredible Voyage",
+      "author": "Alfred Lansing",
+      "genre": "non-fiction",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1391329559i/139069.jpg",
+      "url": "reviews/review.html?book=enduranceshackleton"
     },
     {
       "title": "Dr. Jekyll and Mr. Hyde",
