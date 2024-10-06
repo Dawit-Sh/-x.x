@@ -1,5 +1,15 @@
 {
   "currentlyReading": [
+  ],
+  "finished": [
+    {
+      "title": "Icefields",
+      "author": "Thomas Wharton",
+      "genre": "fiction",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg",
+      "url": "reviews/review.html?book=icefields"
+    },
     {
       "title": "The Natural",
       "author": "Bernard Malamud",
@@ -15,16 +25,6 @@
       "suggested": "Dawit",
       "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1391329559i/139069.jpg",
       "url": "reviews/review.html?book=enduranceshackleton"
-    }
-  ],
-  "finished": [
-    {
-      "title": "Icefields",
-      "author": "Thomas Wharton",
-      "genre": "fiction",
-      "suggested": "Dawit",
-      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg",
-      "url": "reviews/review.html?book=icefields"
     },
     {
       "title": "The Myth of the Rational Voter: Why Democracies Choose Bad Policies",
