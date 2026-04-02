@@ -2,10 +2,10 @@
 > temp_astro@0.0.1 build
 > astro build
 
-[2m20:50:39[22m [34m[types][39m Generated [2m112ms[22m
-[2m20:50:39[22m [34m[build][39m output: [34m"static"[39m
-[2m20:50:39[22m [34m[build][39m mode: [34m"static"[39m
-[2m20:50:39[22m [34m[build][39m directory: [34mC:\Users\civil\OneDrive\Documents\Programming\Github\-x.x\dist\[39m
-[2m20:50:39[22m [34m[build][39m Collecting build info...
-[2m20:50:39[22m [34m[build][39m [32mÔ£ô Completed in 185ms.[39m
-[2m20:50:39[22m [34m[build][39m Building static entrypoints...
+[2m01:24:20[22m [34m[types][39m Generated [2m50ms[22m
+[2m01:24:20[22m [34m[build][39m output: [34m"static"[39m
+[2m01:24:20[22m [34m[build][39m mode: [34m"static"[39m
+[2m01:24:20[22m [34m[build][39m directory: [34mC:\Users\civil\OneDrive\Documents\Programming\Github\-x.x\dist\[39m
+[2m01:24:20[22m [34m[build][39m Collecting build info...
+[2m01:24:20[22m [34m[build][39m [32mÔ£ô Completed in 82ms.[39m
+[2m01:24:20[22m [34m[build][39m Building static entrypoints...
