@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	layoutType?: 'left' | 'right' | 'minimal';
+  activeNav?: 'home' | 'library' | 'reading-now' | 'archive';
+}
+
+const { title, layoutType = 'right', activeNav = 'home' } = Astro.props;
+
+const isLeft = layoutType === 'left';
+const isRight = layoutType === 'right';
+const isMinimal = layoutType === 'minimal';
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="-X.X | BOOK CLUB" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title} | -X.X</title>
+
+		<!-- Preconnect to Google Fonts and icons -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+	</head>
+	<body class="font-body text-on-background selection:bg-secondary selection:text-on-secondary grain-overlay bg-background">
+		
+    <!-- Side Nav -->
+    { !isMinimal && (
+      <nav class={`fixed top-0 h-screen w-64 ${isLeft ? 'left-0 border-r-0 bg-[#0E0E0E]' : 'right-0 bg-surface-container-lowest'} flex flex-col justify-between p-8 z-50`}>
+        <div>
+          <div class="mb-16">
+            <h1 class="text-3xl font-bold tracking-tighter text-white uppercase font-headline">
+              <a href="/">-X.X</a>
+            </h1>
+            <p class="text-[10px] tracking-[0.3em] uppercase text-outline mt-1">{new Date().getFullYear()}</p>
+          </div>
+          <ul class="space-y-6">
+            <li class="group">
+              <a class={`${activeNav === 'home' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/">
+                {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'home' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="home">home</span>}
+                Home
+              </a>
+            </li>
+            <li class="group">
+              <a class={`${activeNav === 'library' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/shuffle">
+                {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'library' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="import_contacts">import_contacts</span>}
+                Library
+              </a>
+            </li>
+            <li class="group">
+              <a class={`${activeNav === 'reading-now' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/#reading-now">
+                {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'reading-now' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="menu_book">menu_book</span>}
+                Reading Now
+              </a>
+            </li>
+            <li class="group">
+              <a class={`${activeNav === 'archive' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/#archive">
+                {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'archive' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="inventory_2">inventory_2</span>}
+                Archive
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-8">
+          <button class="w-full py-4 bg-secondary text-on-secondary font-bold text-xs tracking-widest uppercase hover:scale-[0.98] transition-all">
+            Join the Collective
+          </button>
+        </div>
+      </nav>
+    )}
+
+    <!-- Main Content Wrapper -->
+    <main class={`min-h-screen relative overflow-hidden flex flex-col ${isRight ? 'mr-64' : (isLeft ? 'ml-64' : '')}`}>
+			<slot />
+		</main>
+    
+    <!-- Floating Top Bar for Right Layout (Home) -->
+    { isRight && (
+      <div class="fixed top-0 left-0 w-[calc(100%-16rem)] z-40 h-20 px-12 flex items-center justify-between backdrop-blur-xl bg-[#131313]/60">
+        <div class="flex items-center gap-12">
+          <span class="text-xs font-bold tracking-[0.3em] uppercase text-white">-X.X</span>
+          <div class="hidden md:flex gap-8">
+            <a class="text-[10px] tracking-widest uppercase text-[#C6C2EB] border-b-0" href="#">Current</a>
+            <a class="text-[10px] tracking-widest uppercase text-[#C6C6C6] hover:text-white" href="#upcoming">Upcoming</a>
+            <a class="text-[10px] tracking-widest uppercase text-[#C6C6C6] hover:text-white" href="#archive">Finished</a>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    )}
+
+	</body>
+</html>

@@ -1,0 +1,487 @@
+{
+  "currentlyReading": [
+    {
+      "title": "Every Man for Himself and God Against All: A Memoir",
+      "author": "Werner Herzog",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685352349i/78292253.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Psychology of Gratitude",
+      "author": "Robert A. Emmons",
+      "genre": "#",
+      "suggested": "Nahom",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347245517i/1802705.jpg",
+      "url": "#"
+    },
+    {
+      "title": "No More Morals: The Sexual Revolution",
+      "author": "Lester C. Graham",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1608798705i/56397025.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Evil Under the Sun",
+      "author": "Agatha Christie",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386922974i/16305.jpg",
+      "url": "#"
+    }
+  ],
+  "finished": [
+    {
+      "title": "Icefields",
+      "author": "Thomas Wharton",
+      "genre": "fiction",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630359282i/57271898.jpg",
+      "url": "reviews/review.html?book=icefields"
+    },
+    {
+      "title": "The Natural",
+      "author": "Bernard Malamud",
+      "genre": "fiction",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1701045096i/685.jpg",
+      "url": "reviews/review.html?book=thenatural"
+    },
+    {
+      "title": "The Myth of the Rational Voter: Why Democracies Choose Bad Policies",
+      "author": "Bryan Caplan",
+      "genre": "non-fiction",
+      "suggested": "Nahom",
+      "image": "https://m.media-amazon.com/images/I/71jP7Z+JsGL._AC_UF1000,1000_QL80_.jpg",
+      "url": "reviews/review.html?book=rationalvoter"
+    },
+    {
+      "title": "Good Benito",
+      "author": "Alan Lightman",
+      "genre": "fiction",
+      "suggested": "Dawit", 
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474828794i/3469501.jpg"
+    }  
+  ],
+  "upcoming": [
+    {
+      "title": "Blindsight",
+      "author": "Peter Watts",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924412i/48484.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Endurance: Shackleton's Incredible Voyage",
+      "author": "Alfred Lansing",
+      "genre": "non-fiction",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1391329559i/139069.jpg",
+      "url": "reviews/review.html?book=enduranceshackleton"
+    },
+    {
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "author": "Robert Louis Stevenson",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1318116526i/51496.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Anthem",
+      "author": "Ayn Rand",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441051876i/5460367.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Road",
+      "author": "Cormac McCarthy",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1600241424i/6288.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Wuthering Heights ",
+      "author": "Emily Bronte",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320404408i/507157.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Written Lives",
+      "author": "Javier Maras",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348935247i/982903.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Maniac",
+      "author": "Benjamín Labatut",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1679411721i/75665931.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Lost City of Z: A Tale of Deadly Obsession in the Amazon",
+      "author": "David Grann",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320487318i/3398625.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Rigor of Angels: Borges, Heisenberg, Kant, and the Ultimate Nature of Reality",
+      "author": "William Egginton",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684816550i/63946909.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Notes on Complexity: A Scientific Theory of Connection, Consciousness, and Being",
+      "author": "Neil Theise",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1673876917i/62686859.jpg",
+      "url": "#"
+    },
+    {
+      "title": "A Terribly Serious Adventure: Philosophy and War at Oxford, 1900-1960",
+      "author": "Nikhil Krishnan",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684815208i/62926808.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Devil's Best Trick: How the Face of Evil Disappeared",
+      "author": "Randall Sullivan",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711566545i/197525363.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Murder of Professor Schlick: The Rise and Fall of the Vienna Circle",
+      "author": "David Edmonds",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1590794971i/52579167.jpg",
+      "url": "#"
+    },
+    {
+      "title": "I've Been Thinking",
+      "author": "Daniel C. Dennett",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1676788347i/77264999.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Visionaries: Arendt, Beauvoir, Rand, Weil, and the Power of Philosophy in Dark Times",
+      "author": "Wolfram Eilenberger",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1680672149i/125076611.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Judgment at Tokyo: World War II on Trial and the Making of Modern Asia",
+      "author": "Gary J. Bass",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1688421145i/75596597.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Sea, the Sea",
+      "author": "Iris Murdoch",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1302898449i/11229.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Heart Of Darkness",
+      "author": "Joseph Conrad",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1392799983i/4900.jpg",
+      "url": "#"
+    },
+    {
+      "title": "A Book Forged in Hell: Spinoza's Scandalous Treatise and the Birth of the Secular Age",
+      "author": "Steven Nadler",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1367226145i/11178679.jpg",
+      "url": "#"
+    },
+    {
+      "title": "1177 B.C.: The Year Civilization Collapsed",
+      "author": "Eric H. Cline",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1397424814i/18730589.jpg",
+      "url": "#"
+    },
+    {
+      "title": "A Tattoo on my Brain: A Neurologist's Personal Battle against Alzheimer's Disease",
+      "author": "Daniel Gibbs",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1614021334i/55894927.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Gory Details: Adventures from the Dark Side of Science",
+      "author": "Erika Engelhaupt",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1573099282i/50188782.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Pandora's Lab: Seven Stories of Science Gone Wrong",
+      "author": "Paul A. Offit",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1480403038i/33146881.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Eve: How the Female Body Drove 200 Million Years of Human Evolution",
+      "author": "Cat Bohannon",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684815183i/75494215.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Cigarette: A Political History",
+      "author": "Sarah Milov",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631771741i/44326262.jpg",
+      "url": "#"
+    },
+    {
+      "title": "King of Kings: The Triumph and Tragedy of Emperor Haile Selassie I of Ethiopia",
+      "author": "Asfa-Wossen Asserate",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1476358957i/31939449.jpg",
+      "url": "#"
+    },
+    {
+      "title": "India After Gandhi: The History of the World's Largest Democracy",
+      "author": "Ramachandra Guha",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500471959i/356824.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Chains of Heaven: An Ethiopian Romance",
+      "author": "Philip Marsden",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348007357i/2820658.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Anatomy of Evil",
+      "author": "Michael H. Stone",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1365462799i/6387180.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Fire in the Belly: On Being a Man",
+      "author": "Sam Keen",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435682206i/566259.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Evolution Of Desire: Strategies of Human Mating",
+      "author": "David M. Buss",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348779994i/27491.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Sphinx",
+      "author": "Robin Cook",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349028584i/480054.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The ocean adventure: Science explores the depths of the sea",
+      "author": "Gardner Soule",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://i.pinimg.com/564x/2f/6c/b8/2f6cb8ac3c35a2649d5f073113ec7486.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Gentlemen Conspirators: The Story of the Price-Fixers in the Electrical Industry",
+      "author": "John G. Fuller",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1555606669i/45168468.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Myth of Population Control: Family, Caste and Class in an indian Village",
+      "author": "Mahmood Mamdani",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1266479773i/135109.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Children of China",
+      "author": "Margaret Wylie",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://marebooksellers.cdn.bibliopolis.com/pictures/012179.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Last Things",
+      "author": "C.P. Snow",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1420794227i/1220074.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Portent ",
+      "author": "James Herbert",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1356137086i/459807.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Negative Space",
+      "author": "B.R. Yeager",
+      "genre": "#",
+      "suggested": "Nahom",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1666970692i/52028992.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Anatomy of Violence: The Biological Roots of Crime",
+      "author": "Adrian Raine",
+      "genre": "#",
+      "suggested": "Nahom",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1366655843i/16113422.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Silence Observed",
+      "author": "Michael Innes",
+      "genre": "#",
+      "suggested": "Nahom",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1420793552i/1360745.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Limits of Free Will",
+      "author": "Paul Russell",
+      "genre": "#",
+      "suggested": "Nahom",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1497268315i/34757367.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Hour of the Clown",
+      "author": "Amos Aricha",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348630493i/2445031.jpg",
+      "url": "#"
+    },
+    {
+      "title": "To the Coral Strand",
+      "author": "John Masters",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1373589227i/9191236.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Mao and the Chinese Revolution",
+      "author": "Jerome Ch'en",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566686551l/52368309.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Night",
+      "author": "Al Álvarez",
+      "genre": "#",
+      "suggested": "Nahom",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348175456i/152418.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Myth of Mental Illness: Foundations of a Theory of Personal Conduct",
+      "author": "Thomas Szasz",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1710332131i/706525.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Lucifer Effect: Understanding How Good People Turn Evil ",
+      "author": "Philip G. Zimbardo",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1388365513i/359194.jpg",
+      "url": "#"
+    },
+    {
+      "title": "The Food of the Gods",
+      "author": "H.G. Wells",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1205634444i/953787.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Manufacturing Consent: The Political Economy of the Mass Media",
+      "author": "Edward S. Herman, Noam Chomsky",
+      "genre": "#",
+      "suggested": "Abrham",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1525166345i/12617.jpg",
+      "url": "#"
+    },
+    {
+      "title": "Lord Of the Flies",
+      "author": "William Golding",
+      "genre": "#",
+      "suggested": "Dawit",
+      "image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327869409i/7624.jpg",
+      "url": "#"
+    }
+  ]   
+}

@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const allReviews = import.meta.glob('../../data/reviews/*.json', { eager: true });
+  
+  return Object.keys(allReviews).map((path) => {
+    // Extract the filename without .json
+    const slug = path.split('/').pop()?.replace('.json', '');
+    const data = allReviews[path];
+    
+    return {
+      params: { slug },
+      props: { reviewData: data }
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const { reviewData } = Astro.props as { reviewData: any };
+
+// Calculate member ratings mock data (using defaults since they aren't provided by the JSON structure in previous iterations, except individual ratings)
+const totalReviews = reviewData.reviews ? reviewData.reviews.length : 0;
+const avgRating = totalReviews > 0 ? (reviewData.reviews.reduce((acc: number, curr: any) => acc + curr.rating, 0) / totalReviews).toFixed(1) : 'N/A';
+const avgRatingVal = avgRating !== 'N/A' ? parseFloat(avgRating) : 0;
+const ratingPercent = avgRatingVal > 0 ? Math.round((avgRatingVal / 5) * 100) : 0;
+---
+
+<Layout title={(reviewData.title || 'Review') + " Review"} layoutType="left" activeNav="reading-now">
+  <!-- TopAppBar -->
+  <header class="flex justify-between items-center w-full px-12 py-6 sticky top-0 z-40 bg-transparent backdrop-blur-xl bg-[#131313]/60">
+    <div class="flex items-center gap-12">
+      <div class="flex gap-8">
+        <a class="text-[#C6C2EB] text-[11px] font-bold tracking-[0.2em] uppercase" href="/#reading-now">Current</a>
+        <a class="text-[#C6C6C6] hover:text-white text-[11px] tracking-[0.2em] uppercase transition-all" href="/#upcoming">Upcoming</a>
+        <a class="text-[#C6C6C6] hover:text-white text-[11px] tracking-[0.2em] uppercase transition-all" href="/#archive">Finished</a>
+      </div>
+    </div>
+    <div></div>
+  </header>
+
+  <!-- Book Detail Content -->
+  <section class="flex-grow grid grid-cols-12 gap-0 relative">
+    <!-- Left: Massive Image Section -->
+    <div class="col-span-12 lg:col-span-6 h-[716px] lg:h-auto sticky top-24 overflow-hidden bg-surface-container-lowest">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-transparent z-10 opacity-60"></div>
+      <img src={reviewData.image || "https://lh3.googleusercontent.com/aida-public/AB6AXuBRN0Zjxg2y5GUJ7Wx_l_gW7dxMLEjq-VX3fudIQ0rVaJUhNAzCEcrZqTpwNHPowCRskYKppaewD4qARTVUXS-9sHRV48V_mcAR0u_koATEzC_eSDQY_X143A_nwZ7cD-l3kGh6bxmnOixKjhrgI5mUhE0Kg253KOMffl6Y1f0jE9uvmcj1Yoyr9WRc3dIdKMrYsCx2OKLz32VUHQGX2sznTW_7r21wnjWxqCId0-K7_2RKqGcLRoLYNTsbyOerYvscVk60Mkk2"} alt={(reviewData.title || '') + ' cover'} class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-700 ease-in-out cursor-crosshair" />
+    </div>
+
+    <!-- Right: Content & Reviews -->
+    <div class="col-span-12 lg:col-span-6 px-12 py-16 flex flex-col gap-20">
+      <!-- Title & Author -->
+      <div class="space-y-4">
+        <h2 class="text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase font-headline leading-none">
+          {reviewData.title}
+        </h2>
+        <div class="flex items-center gap-4 mt-8">
+          <span class="h-[2px] w-12 bg-secondary"></span>
+          <p class="text-2xl font-bold tracking-widest text-secondary uppercase font-headline">{reviewData.author}</p>
+        </div>
+        <div class="pt-8 max-w-lg">
+          <p class="text-on-surface-variant font-body leading-relaxed text-sm">
+            {reviewData.description}
+          </p>
+        </div>
+      </div>
+
+      <!-- Member Ratings -->
+      <div class="bg-surface-container-lowest p-10 border-l-4 border-secondary">
+        <h3 class="text-[10px] tracking-[0.4em] text-outline uppercase mb-8 font-label">MEMBER RATINGS</h3>
+        <div class="flex items-end gap-12 flex-wrap">
+          <div>
+            <span class="text-8xl font-black text-white font-headline leading-none">{avgRatingVal > 0 ? (avgRatingVal * 2).toFixed(1) : 'N/A'}</span>
+            <span class="text-outline text-xl font-headline">/10</span>
+          </div>
+          <div class="flex-grow space-y-2 mb-2 min-w-[200px]">
+            <div class="flex justify-between text-[10px] tracking-widest uppercase">
+              <span>Complexity</span>
+              <span>{ratingPercent}%</span>
+            </div>
+            <div class="h-1 bg-surface-container w-full">
+              <div class="h-full bg-secondary" style={"width: " + ratingPercent + "%"}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Critiques Section -->
+      <div class="space-y-12">
+        <div class="flex justify-between items-end border-b border-outline-variant/20 pb-4">
+          <h3 class="text-[10px] tracking-[0.4em] text-outline uppercase font-label">CRITIQUES</h3>
+          <span class="text-[10px] tracking-[0.2em] text-secondary uppercase cursor-pointer hover:underline">Write Entry</span>
+        </div>
+        
+        <div class="grid gap-12">
+          {reviewData.reviews && reviewData.reviews.length > 0 ? reviewData.reviews.map((review: any) => (
+            <div class="grid grid-cols-[1fr_auto] gap-8">
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <span class="text-[10px] tracking-widest text-white uppercase font-bold">{review.name}</span>
+                  <span class="text-[10px] tracking-widest text-outline uppercase">MEMBER</span>
+                </div>
+                <p class="text-sm font-mono text-on-surface leading-[1.6em] h-[6.4em] overflow-hidden">
+                  {review.review}
+                </p>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="material-symbols-outlined text-secondary text-lg" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="text-[10px] font-bold mt-1 font-headline">{(review.rating * 2).toFixed(1)}</span>
+              </div>
+            </div>
+          )) : (
+            <div class="py-12 text-center border-y border-outline-variant/10 text-outline uppercase text-[10px] tracking-widest">
+              No entries logged for this volume.
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div class="pt-12">
+        <button class="w-full py-6 border-2 border-outline-variant hover:border-secondary hover:text-secondary transition-all text-[11px] tracking-[0.5em] font-bold uppercase">
+          Load More Critiques [244]
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="flex justify-between items-center px-12 py-8 border-t border-[#474747]/15 bg-[#0E0E0E]">
+    <p class="text-[10px] tracking-[0.2em] text-[#474747] uppercase font-label">©{new Date().getFullYear()} BOOK CLUB. NO RIGHTS RESERVED.</p>
+    <div class="flex gap-8">
+      <a class="text-[10px] tracking-[0.2em] text-[#474747] hover:text-white uppercase transition-all" href="#">Terms</a>
+      <a class="text-[10px] tracking-[0.2em] text-[#474747] hover:text-white uppercase transition-all" href="#">Privacy</a>
+      <a class="text-[10px] tracking-[0.2em] text-[#474747] hover:text-white uppercase transition-all" href="#">Archive</a>
+      <a class="text-[10px] tracking-[0.2em] text-[#474747] hover:text-white uppercase transition-all" href="#">Contact</a>
+    </div>
+  </footer>
+</Layout>

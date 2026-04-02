@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Shuffle Upcoming Shelf" layoutType="minimal">
+  <div class="min-h-screen flex flex-col justify-center items-center py-24 px-8 relative overflow-hidden bg-background">
+    <!-- Grid pattern background for texture -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(71,71,71,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(71,71,71,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_30%,transparent_100%)]"></div>
+    
+    <div class="text-center space-y-8 z-10 w-full max-w-6xl">
+      <div class="inline-block border border-outline-variant/30 px-6 py-2 bg-surface-container-lowest text-[10px] tracking-[0.5em] text-outline uppercase mt-0">
+        Randomization Protocol
+      </div>
+      
+      <h1 class="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase font-headline">
+        NEXT READING
+      </h1>
+      <p class="text-[10px] tracking-widest text-outline uppercase" id="bookCount">Fetching Library Volume...</p>
+      
+      <div class="flex flex-wrap justify-center gap-6 mt-12 mb-20 relative z-20">
+        <button id="shuffleButton" class="px-10 py-5 bg-white text-black text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-secondary hover:text-on-secondary transition-colors focus:outline-none">
+          Shuffle Sequence
+        </button>
+        <a href="/" class="px-10 py-5 border border-outline-variant text-white text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-surface-container-highest transition-colors flex items-center gap-3">
+          <span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+          Home
+        </a>
+      </div>
+    </div>
+
+    <!-- Active sequence display -->
+    <div class="w-full max-w-6xl z-10 relative">
+      <div class="absolute inset-0 border border-outline-variant/20 -m-4 md:-m-12 bg-surface-container-lowest/80 backdrop-blur-md"></div>
+      
+      <div id="upcoming" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 place-items-center relative z-10 min-h-[400px] p-4 md:p-12">
+        <!-- Shuffled books will load here -->
+        <div class="col-span-full text-center py-20 animate-pulse flex flex-col items-center" id="loadingState">
+          <span class="material-symbols-outlined text-4xl text-outline mb-4 animate-spin" style="font-variation-settings: 'FILL' 0, 'wght' 200;" data-icon="sync">sync</span>
+          <p class="text-[10px] tracking-[0.3em] text-outline uppercase">Calibrating modules...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // @ts-nocheck
+  document.addEventListener("DOMContentLoaded", function() {
+    const shuffleButton = document.getElementById("shuffleButton");
+    const bookCountDiv = document.getElementById("bookCount");
+    const container = document.getElementById("upcoming");
+    const loadingState = document.getElementById("loadingState");
+    
+    let books = [];
+    const suggestedKeys = ["Abrham", "Nahom", "Dawit"];
+
+    loadingState.classList.remove("hidden");
+    fetch("/books.json")
+      .then((response) => response.json())
+      .then((data) => {
+        books = data.upcoming;
+        bookCountDiv.textContent = `Library Size: ${books.length} Volumes`;
+        loadingState.classList.add("hidden");
+        // Automatically shuffle once data is ready
+        shuffleBooks();
+      })
+      .catch((error) => {
+        loadingState.innerHTML = "<p class='text-error uppercase tracking-widest text-[10px]'>Error acquiring data stream.</p>";
+        console.error("Error fetching books:", error)
+      });
+
+    shuffleButton.addEventListener("click", () => {
+      shuffleBooks();
+    });
+
+    function shuffleBooks() {
+      if (books.length === 0) return;
+
+      let selectedBooks = [];
+      let remainingBooks = [...books];
+      const shuffledKeys = [...suggestedKeys].sort(() => Math.random() - 0.5);
+
+      // Rule: Pick 2 books from the first key
+      const key1 = shuffledKeys[0];
+      const booksFromKey1 = remainingBooks.filter((book) => book.suggested === key1);
+      const chosenFromKey1 = getRandomBooks(booksFromKey1, 2);
+      selectedBooks = selectedBooks.concat(chosenFromKey1);
+      remainingBooks = remainingBooks.filter((book) => !chosenFromKey1.includes(book));
+
+      // Rule: Pick 1 book from the second key
+      const key2 = shuffledKeys[1];
+      const booksFromKey2 = remainingBooks.filter((book) => book.suggested === key2);
+      if (booksFromKey2.length > 0) {
+        const chosenFromKey2 = getRandomBooks(booksFromKey2, 1)[0];
+        selectedBooks.push(chosenFromKey2);
+        remainingBooks = remainingBooks.filter((book) => book !== chosenFromKey2);
+      }
+
+      // Rule: Pick 1 book from the third key
+      const key3 = shuffledKeys[2];
+      const booksFromKey3 = remainingBooks.filter((book) => book.suggested === key3);
+      if (booksFromKey3.length > 0) {
+        const chosenFromKey3 = getRandomBooks(booksFromKey3, 1)[0];
+        selectedBooks.push(chosenFromKey3);
+      }
+
+      displayBooks(selectedBooks);
+    }
+
+    function getRandomBooks(books, count) {
+      return books
+        .map((book) => ({ ...book, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .slice(0, count);
+    }
+
+    function getCorrectUrl(url) {
+      if (!url || url === "#") return "#";
+      if (url.includes("reviews/review.html?book=")) {
+        const bookSlug = url.split("?book=")[1];
+        return `/reviews/${bookSlug}`;
+      }
+      return url;
+    }
+
+    function displayBooks(selected) {
+      container.innerHTML = "";
+      
+      selected.forEach((book, index) => {
+        const bookUrl = getCorrectUrl(book.url);
+        const bookDiv = document.createElement("div");
+        bookDiv.style.animationDelay = `${index * 0.15}s`;
+        
+        // Use a 3D-effect flip card with the brutalist aesthetic
+        bookDiv.innerHTML = `
+          <a href="${bookUrl}" class="block group relative w-full h-full max-w-[200px] cursor-crosshair">
+            <div class="relative aspect-[3/4] w-full bg-surface border border-outline-variant/30 overflow-hidden mix-blend-normal">
+                <img src="${book.image}" alt="${book.title}" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-[0.5] transition-all duration-700">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 flex items-end">
+                  <p class="text-[9px] font-bold text-white tracking-[0.2em] uppercase text-center w-full leading-tight">
+                    SUGGESTED BY<br/>
+                    <span class="text-secondary tracking-widest font-headline text-lg">${book.suggested}</span>
+                  </p>
+                </div>
+                <!-- Scanning line effect on hover -->
+                <div class="absolute inset-0 bg-white/10 h-1 hidden group-hover:block transition-all duration-1000 -translate-y-full hover-scan-anim"></div>
+            </div>
+            ${bookUrl !== "#" ? `
+              <div class="absolute top-4 -right-2 bg-secondary text-on-secondary w-8 h-8 flex items-center justify-center font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl border border-black z-20">
+                <span class="material-symbols-outlined text-[16px]" data-icon="east">east</span>
+              </div>
+            ` : ''}
+          </a>
+        `;
+        bookDiv.classList.add("shuffling");
+        container.appendChild(bookDiv);
+      });
+      
+      // Industrial container jolt
+      container.parentElement.style.transform = 'scale(0.99)';
+      setTimeout(() => container.parentElement.style.transform = 'scale(1)', 100);
+      container.parentElement.style.transition = 'transform 0.1s cubic-bezier(0,1.2,1,1)';
+    }
+
+    // Add CSS for the scan animation specifically for this page
+    if (!document.getElementById("shuffleStyles")) {
+      const style = document.createElement("style");
+      style.id = "shuffleStyles";
+      style.textContent = `
+        @keyframes scanDown {
+          0% { transform: translateY(-100%); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(400px); opacity: 0; }
+        }
+        .hover-scan-anim {
+          animation: scanDown 1.5s infinite linear;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  });
+</script>
