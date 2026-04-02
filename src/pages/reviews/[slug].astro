@@ -2,13 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const allReviews = import.meta.glob('../../data/reviews/*.json', { eager: true });
+  const reviews = import.meta.glob('../../data/reviews/*.json', { eager: true });
   
-  return Object.keys(allReviews).map((path) => {
-    // Extract the filename without .json
+  return Object.entries(reviews).map(([path, data]) => {
     const slug = path.split('/').pop()?.replace('.json', '');
-    const data = allReviews[path];
-    
     return {
       params: { slug },
       props: { reviewData: data }
@@ -19,10 +16,10 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const { reviewData } = Astro.props as { reviewData: any };
 
-// Calculate member ratings mock data (using defaults since they aren't provided by the JSON structure in previous iterations, except individual ratings)
-const totalReviews = reviewData.reviews ? reviewData.reviews.length : 0;
-const avgRating = totalReviews > 0 ? (reviewData.reviews.reduce((acc: number, curr: any) => acc + curr.rating, 0) / totalReviews).toFixed(1) : 'N/A';
-const avgRatingVal = avgRating !== 'N/A' ? parseFloat(avgRating) : 0;
+// Calculate member ratings mock data
+const reviews = reviewData.reviews || [];
+const totalReviews = reviews.length;
+const avgRatingVal = totalReviews > 0 ? reviews.reduce((acc: number, curr: any) => acc + curr.rating, 0) / totalReviews : 0;
 const ratingPercent = avgRatingVal > 0 ? Math.round((avgRatingVal / 5) * 100) : 0;
 ---
 
@@ -93,7 +90,7 @@ const ratingPercent = avgRatingVal > 0 ? Math.round((avgRatingVal / 5) * 100) : 
         </div>
         
         <div class="grid gap-12">
-          {reviewData.reviews && reviewData.reviews.length > 0 ? reviewData.reviews.map((review: any) => (
+          {reviews.length > 0 ? reviews.map((review: any) => (
             <div class="grid grid-cols-[1fr_auto] gap-8">
               <div class="space-y-4">
                 <div class="flex items-center gap-4">
