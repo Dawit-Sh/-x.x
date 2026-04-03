@@ -20,7 +20,7 @@ const isMinimal = layoutType === 'minimal';
 		<meta charset="UTF-8" />
 		<meta name="description" content="-X.X | BOOK CLUB" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/-x.x/favicon.svg" />
 		<title>{title} | -X.X</title>
 
 		<!-- Preconnect to Google Fonts and icons -->
@@ -29,39 +29,78 @@ const isMinimal = layoutType === 'minimal';
 		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 	</head>
-	<body class="font-body text-on-background selection:bg-secondary selection:text-on-secondary grain-overlay bg-background">
+	<body class="font-body text-on-background selection:bg-secondary selection:text-on-secondary grain-overlay bg-background overflow-x-hidden">
 		
-    <!-- Side Nav -->
+    <!-- Mobile Header (Visible only on mobile) -->
     { !isMinimal && (
-      <nav class={`fixed top-0 h-screen w-64 ${isLeft ? 'left-0 border-r-0 bg-[#0E0E0E]' : 'right-0 bg-surface-container-lowest'} flex flex-col justify-between p-8 z-50`}>
+      <div class="fixed top-0 left-0 w-full h-16 bg-background/80 backdrop-blur-md border-b border-outline-variant/20 z-[60] flex items-center justify-between px-6 md:hidden">
+        <a href="/-x.x/" class="text-xl font-bold tracking-tighter text-white uppercase font-headline">-X.X</a>
+        <button id="mobileMenuToggle" class="text-[10px] font-bold tracking-[0.3em] uppercase text-white px-4 py-2 border border-outline-variant hover:bg-white hover:text-black transition-colors">
+          Menu
+        </button>
+      </div>
+    )}
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-background z-[70] hidden flex-col md:hidden">
+      <div class="flex flex-col h-full p-12">
+        <div class="flex justify-between items-center mb-16">
+          <span class="text-2xl font-bold tracking-tighter text-white uppercase font-headline">-X.X</span>
+          <button id="mobileMenuClose" class="text-[10px] font-bold tracking-[0.3em] uppercase text-outline">Close</button>
+        </div>
+        <ul class="space-y-8">
+          <li>
+            <a class={`text-4xl font-headline font-bold uppercase ${activeNav === 'home' ? 'text-secondary' : 'text-white'}`} href="/-x.x/">Home</a>
+          </li>
+          <li>
+            <a class={`text-4xl font-headline font-bold uppercase ${activeNav === 'library' ? 'text-secondary' : 'text-white'}`} href="/-x.x/shuffle">Library</a>
+          </li>
+          <li>
+            <a class={`text-4xl font-headline font-bold uppercase ${activeNav === 'reading-now' ? 'text-secondary' : 'text-white'}`} href="/-x.x/#reading-now">Reading Now</a>
+          </li>
+          <li>
+            <a class={`text-4xl font-headline font-bold uppercase ${activeNav === 'archive' ? 'text-secondary' : 'text-white'}`} href="/-x.x/#archive">Archive</a>
+          </li>
+        </ul>
+        <div class="mt-auto">
+          <button class="w-full py-6 bg-secondary text-on-secondary font-bold text-sm tracking-widest uppercase">
+            Join the Collective
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side Nav (Desktop) -->
+    { !isMinimal && (
+      <nav class={`fixed top-0 h-screen w-64 ${isLeft ? 'left-0 border-r-0 bg-[#0E0E0E]' : 'right-0 bg-surface-container-lowest'} hidden md:flex flex-col justify-between p-8 z-50`}>
         <div>
           <div class="mb-16">
             <h1 class="text-3xl font-bold tracking-tighter text-white uppercase font-headline">
-              <a href="/">-X.X</a>
+              <a href="/-x.x/">-X.X</a>
             </h1>
             <p class="text-[10px] tracking-[0.3em] uppercase text-outline mt-1">{new Date().getFullYear()}</p>
           </div>
           <ul class="space-y-6">
             <li class="group">
-              <a class={`${activeNav === 'home' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/">
+              <a class={`${activeNav === 'home' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/-x.x/">
                 {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'home' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="home">home</span>}
                 Home
               </a>
             </li>
             <li class="group">
-              <a class={`${activeNav === 'library' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/shuffle">
+              <a class={`${activeNav === 'library' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/-x.x/shuffle">
                 {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'library' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="import_contacts">import_contacts</span>}
                 Library
               </a>
             </li>
             <li class="group">
-              <a class={`${activeNav === 'reading-now' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/#reading-now">
+              <a class={`${activeNav === 'reading-now' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/-x.x/#reading-now">
                 {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'reading-now' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="menu_book">menu_book</span>}
                 Reading Now
               </a>
             </li>
             <li class="group">
-              <a class={`${activeNav === 'archive' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/#archive">
+              <a class={`${activeNav === 'archive' ? 'text-[#C6C2EB] font-bold before:content-[\'•\'] before:mr-2 flex items-center text-xs tracking-widest uppercase transition-all' : 'text-[#C6C6C6] hover:text-white transition-colors duration-300 uppercase text-xs tracking-widest flex items-center group'}`} href="/-x.x/#archive">
                 {isLeft && <span class={`material-symbols-outlined mr-4 ${activeNav !== 'archive' ? 'group-hover:scale-110' : ''} transition-transform`} data-icon="inventory_2">inventory_2</span>}
                 Archive
               </a>
@@ -77,24 +116,54 @@ const isMinimal = layoutType === 'minimal';
     )}
 
     <!-- Main Content Wrapper -->
-    <main class={`min-h-screen relative overflow-hidden flex flex-col ${isRight ? 'mr-64' : (isLeft ? 'ml-64' : '')}`}>
+    <main class={`min-h-screen relative overflow-hidden flex flex-col pt-16 md:pt-0 ${isRight ? 'md:mr-64' : (isLeft ? 'md:ml-64' : '')}`}>
 			<slot />
 		</main>
     
-    <!-- Floating Top Bar for Right Layout (Home) -->
+    <!-- Floating Top Bar for Right Layout (Desktop Only) -->
     { isRight && (
-      <div class="fixed top-0 left-0 w-[calc(100%-16rem)] z-40 h-20 px-12 flex items-center justify-between backdrop-blur-xl bg-[#131313]/60">
+      <div class="fixed top-0 left-0 w-[calc(100%-16rem)] z-40 h-20 px-12 hidden md:flex items-center justify-between backdrop-blur-xl bg-[#131313]/60">
         <div class="flex items-center gap-12">
           <span class="text-xs font-bold tracking-[0.3em] uppercase text-white">-X.X</span>
           <div class="hidden md:flex gap-8">
-            <a class="text-[10px] tracking-widest uppercase text-[#C6C2EB] border-b-0" href="#">Current</a>
-            <a class="text-[10px] tracking-widest uppercase text-[#C6C6C6] hover:text-white" href="#upcoming">Upcoming</a>
-            <a class="text-[10px] tracking-widest uppercase text-[#C6C6C6] hover:text-white" href="#archive">Finished</a>
+            <a class="text-[10px] tracking-widest uppercase text-[#C6C2EB] border-b-0" href="/-x.x/#reading-now">Current</a>
+            <a class="text-[10px] tracking-widest uppercase text-[#C6C6C6] hover:text-white" href="/-x.x/#upcoming">Upcoming</a>
+            <a class="text-[10px] tracking-widest uppercase text-[#C6C6C6] hover:text-white" href="/-x.x/#archive">Finished</a>
           </div>
         </div>
         <div></div>
       </div>
     )}
+
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('mobileMenuToggle');
+        const close = document.getElementById('mobileMenuClose');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        
+        if (toggle && close && overlay) {
+          toggle.addEventListener('click', () => {
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+          });
+          close.addEventListener('click', () => {
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            document.body.style.overflow = '';
+          });
+          // Close menu on link click
+          const links = overlay.querySelectorAll('a');
+          links.forEach(link => {
+            link.addEventListener('click', () => {
+              overlay.classList.add('hidden');
+              overlay.classList.remove('flex');
+              document.body.style.overflow = '';
+            });
+          });
+        }
+      });
+    </script>
 
 	</body>
 </html>

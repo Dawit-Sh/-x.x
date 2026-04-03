@@ -1,17 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import booksData from '../data/books.json';
+
+const currentlyReading = booksData.currentlyReading || [];
+const finished = booksData.finished || [];
+const upcoming = booksData.upcoming || [];
+
+function getTitleCategory(index: number, genre: string) {
+  const idx = (index + 1).toString().padStart(2, '0');
+  return genre ? `${idx} / ${genre.toUpperCase()}` : `${idx} / MODULE`;
+}
+
+function getCorrectUrl(url: string) {
+  if (!url || url === "#") return "#";
+  if (url.indexOf("reviews/review.html?book=") !== -1) {
+    return "/-x.x/reviews/" + url.split("?book=")[1];
+  }
+  return url;
+}
 ---
 
 <Layout title="Home" layoutType="right" activeNav="home">
   <!-- Search & Filter Bar Custom for industrial aesthetic -->
-  <div class="fixed top-[4.5rem] right-72 z-40 flex items-center gap-4 py-4 backdrop-blur-sm pointer-events-auto">
-    <div class="relative w-48 xl:w-64 scale-90 origin-right">
+  <div class="fixed top-20 md:top-[4.5rem] right-6 md:right-72 z-40 flex items-center gap-2 md:gap-4 py-4 backdrop-blur-sm pointer-events-auto scale-75 md:scale-90 origin-right">
+    <div class="relative w-40 md:w-64">
       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        <span class="material-symbols-outlined text-outline text-lg" data-icon="search">search</span>
+        <span class="material-symbols-outlined text-outline text-sm md:text-lg" data-icon="search">search</span>
       </div>
-      <input type="text" id="searchInput" class="bg-surface-container-lowest/80 border border-outline-variant outline-none text-white text-[10px] uppercase tracking-widest focus:border-white block w-full pl-9 p-2.5 transition-colors placeholder:text-outline/50" placeholder="Search..." />
+      <input type="text" id="searchInput" class="bg-surface-container-lowest/80 border border-outline-variant outline-none text-white text-[8px] md:text-[10px] uppercase tracking-widest focus:border-white block w-full pl-9 p-2.5 transition-colors placeholder:text-outline/50" placeholder="Search..." />
     </div>
-    <select id="filterSelect" class="bg-surface-container-lowest/80 border border-outline-variant text-white text-[10px] uppercase tracking-widest focus:border-white outline-none block p-2.5 cursor-pointer transition-colors appearance-none pr-6 relative px-3 scale-90 origin-left">
+    <select id="filterSelect" class="bg-surface-container-lowest/80 border border-outline-variant text-white text-[8px] md:text-[10px] uppercase tracking-widest focus:border-white outline-none block p-2.5 cursor-pointer transition-colors appearance-none pr-6 relative px-3">
       <option value="all">SEARCH</option>
       <option value="fiction">FICTION</option>
       <option value="non-fiction">NON-FICTION</option>
@@ -19,53 +37,109 @@ import Layout from '../layouts/Layout.astro';
   </div>
 
   <!-- Hero Section -->
-  <header class="relative min-h-[80vh] flex flex-col justify-center px-8 md:px-12 pt-24 border-b border-outline-variant/15">
+  <header class="relative min-h-[60vh] md:min-h-[80vh] flex flex-col justify-center px-6 md:px-12 pt-32 md:pt-24 border-b border-outline-variant/15">
     <div class="relative z-10">
-      <h2 class="font-headline text-[18vw] leading-[0.8] font-black tracking-tighter text-white uppercase select-none mb-4">
+      <h2 class="font-headline text-[25vw] md:text-[18vw] leading-[0.8] font-black tracking-tighter text-white uppercase select-none mb-4">
         -X.X
       </h2>
-      <div class="flex items-center gap-8 mt-12">
-        <div class="h-px w-24 bg-secondary"></div>
-        <p class="max-w-md text-on-surface-variant font-medium leading-relaxed uppercase tracking-tighter text-sm">
+      <div class="flex items-center gap-4 md:gap-8 mt-8 md:mt-12">
+        <div class="h-px w-12 md:w-24 bg-secondary"></div>
+        <p class="max-w-md text-on-surface-variant font-medium leading-relaxed uppercase tracking-tighter text-xs md:text-sm">
           BOOK CLUB
         </p>
       </div>
     </div>
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-12 left-12 flex items-center gap-4">
-      <span class="text-[10px] tracking-[0.4em] uppercase text-outline rotate-90 origin-left">Scroll</span>
+    <div class="absolute bottom-12 left-6 md:left-12 flex items-center gap-4">
+      <span class="text-[8px] md:text-[10px] tracking-[0.4em] uppercase text-outline rotate-90 origin-left">Scroll</span>
     </div>
   </header>
 
   <!-- THIS MONTH Section (Currently Reading) -->
-  <section id="reading-now" class="py-32 px-12 bg-surface-container-low">
-    <div class="flex justify-between items-end mb-20">
+  <section id="reading-now" class="py-20 md:py-32 px-6 md:px-12 bg-surface-container-low">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8 md:gap-0">
       <div>
-        <span class="text-secondary font-bold tracking-[0.5em] uppercase text-xs">Current Rotation</span>
-        <h3 class="font-headline text-7xl font-bold text-white uppercase mt-2">THIS MONTH</h3>
+        <span class="text-secondary font-bold tracking-[0.5em] uppercase text-[10px] md:text-xs">Current Rotation</span>
+        <h3 class="font-headline text-5xl md:text-7xl font-bold text-white uppercase mt-2">THIS MONTH</h3>
       </div>
-      <a href="/shuffle" class="flex items-center gap-3 px-6 py-3 border border-outline-variant hover:bg-white hover:text-black transition-all cursor-pointer group">
+      <a href="/-x.x/shuffle" class="flex items-center gap-3 px-6 py-3 border border-outline-variant hover:bg-white hover:text-black transition-all cursor-pointer group w-full md:w-auto justify-center md:justify-start">
         <span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500" data-icon="shuffle">shuffle</span>
         <span class="text-xs tracking-widest uppercase font-bold">Shuffle</span>
       </a>
     </div>
     <div id="currentlyReading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- Rendered via JS -->
+      {currentlyReading.map((book, index) => {
+        const bookUrl = getCorrectUrl(book.url);
+        const InteractiveTag = bookUrl !== "#" ? "a" : "div";
+        const genreLabel = getTitleCategory(index, book.genre);
+        return (
+          <InteractiveTag 
+            href={bookUrl !== "#" ? bookUrl : undefined} 
+            class={`group relative aspect-[3/4] bg-surface overflow-hidden transition-transform duration-500 block ${bookUrl !== "#" ? "cursor-crosshair" : ""} border border-outline-variant/10`}
+          >
+            <img 
+              src={book.image || ''} 
+              alt={book.title || ''} 
+              loading="lazy" 
+              class="w-full h-full object-cover transition-transform duration-700 grayscale-0 md:grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-0"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90 mix-blend-multiply"></div>
+            {book.suggested && (
+              <div class="absolute top-4 right-4 bg-white text-black px-2 py-1 text-[8px] font-black tracking-[0.2em] uppercase shadow-2xl mix-blend-screen">
+                {book.suggested}
+              </div>
+            )}
+            <div class="absolute bottom-0 p-6 w-full flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <p class="text-[9px] text-secondary tracking-widest uppercase mb-2 font-bold opacity-80 group-hover:opacity-100">{genreLabel}</p>
+              <h4 class="text-xl lg:text-2xl font-headline font-bold text-white uppercase leading-none drop-shadow-md pb-1 text-stroke hover:-webkit-text-stroke-0 hover:text-white transition-all duration-300 selection:bg-transparent">{book.title || 'Untitled'}</h4>
+              <p class="text-[9px] tracking-[0.2em] uppercase text-outline mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{book.author || 'Unknown'}</p>
+            </div>
+          </InteractiveTag>
+        );
+      })}
     </div>
   </section>
 
   <!-- UPCOMING Section -->
-  <section id="upcoming" class="py-32 px-12 relative">
-    <div class="mb-20">
-      <span class="text-secondary font-bold tracking-[0.5em] uppercase text-xs">Queue State</span>
-      <h3 class="font-headline text-7xl font-bold text-white uppercase mt-2">UPCOMING</h3>
+  <section id="upcoming" class="py-20 md:py-32 px-6 md:px-12 relative">
+    <div class="mb-12 md:mb-20">
+      <span class="text-secondary font-bold tracking-[0.5em] uppercase text-[10px] md:text-xs">Queue State</span>
+      <h3 class="font-headline text-5xl md:text-7xl font-bold text-white uppercase mt-2">UPCOMING</h3>
     </div>
     <div class="relative">
-      <div id="upcomingShelf" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <!-- Rendered via JS -->
+      <div id="upcomingShelf" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {upcoming.slice(0, 8).map((book, index) => {
+          const bookUrl = getCorrectUrl(book.url);
+          const InteractiveTag = bookUrl !== "#" ? "a" : "div";
+          const genreLabel = getTitleCategory(index, book.genre);
+          return (
+            <InteractiveTag 
+              href={bookUrl !== "#" ? bookUrl : undefined} 
+              class={`group relative aspect-[3/4] bg-surface overflow-hidden transition-transform duration-500 block ${bookUrl !== "#" ? "cursor-crosshair" : ""} border border-outline-variant/10`}
+            >
+              <img 
+                src={book.image || ''} 
+                alt={book.title || ''} 
+                loading="lazy" 
+                class="w-full h-full object-cover transition-transform duration-700 grayscale-0 md:grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-0"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90 mix-blend-multiply"></div>
+              {book.suggested && (
+                <div class="absolute top-4 right-4 bg-white text-black px-2 py-1 text-[8px] font-black tracking-[0.2em] uppercase shadow-2xl mix-blend-screen">
+                  {book.suggested}
+                </div>
+              )}
+              <div class="absolute bottom-0 p-6 w-full flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <p class="text-[9px] text-secondary tracking-widest uppercase mb-2 font-bold opacity-80 group-hover:opacity-100">{genreLabel}</p>
+                <h4 class="text-xl lg:text-2xl font-headline font-bold text-white uppercase leading-none drop-shadow-md pb-1 text-stroke hover:-webkit-text-stroke-0 hover:text-white transition-all duration-300 selection:bg-transparent">{book.title || 'Untitled'}</h4>
+                <p class="text-[9px] tracking-[0.2em] uppercase text-outline mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{book.author || 'Unknown'}</p>
+              </div>
+            </InteractiveTag>
+          );
+        })}
       </div>
       <div class="mt-16 flex justify-center">
-        <button id="showMoreUpcomingButton" class="px-10 py-5 border border-outline-variant text-white text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors focus:outline-none">
+        <button id="showMoreUpcomingButton" class="px-10 py-5 border border-outline-variant text-white text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors focus:outline-none" style={upcoming.length <= 8 ? "display: none" : ""}>
           Load More State
         </button>
       </div>
@@ -73,48 +147,75 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- FINISHED Gallery -->
-  <section id="archive" class="py-32 px-12 bg-surface-container-lowest">
-    <div class="flex items-center gap-12 mb-20">
-      <h3 class="font-headline text-7xl font-bold text-white uppercase">FINISHED</h3>
-      <div class="flex-grow h-px bg-outline-variant opacity-30"></div>
-      <div class="text-right">
-        <p class="text-4xl font-headline font-bold text-secondary" id="finishedCount">00</p>
+  <section id="archive" class="py-20 md:py-32 px-6 md:px-12 bg-surface-container-lowest">
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 mb-12 md:mb-20">
+      <h3 class="font-headline text-5xl md:text-7xl font-bold text-white uppercase">FINISHED</h3>
+      <div class="hidden md:block flex-grow h-px bg-outline-variant opacity-30"></div>
+      <div class="text-left md:text-right">
+        <p class="text-3xl md:text-4xl font-headline font-bold text-secondary" id="finishedCount">{finished.length.toString().padStart(2, '0')}</p>
         <p class="text-[10px] tracking-widest uppercase text-outline">Volumes Logged</p>
       </div>
     </div>
     
-    <div id="finished" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start relative z-10 w-full">
-      <!-- Rendered via JS -->
+    <div id="finished" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-start relative z-10 w-full">
+      {finished.slice(0, 8).map((book, index) => {
+        const bookUrl = getCorrectUrl(book.url);
+        const InteractiveTag = bookUrl !== "#" ? "a" : "div";
+        const genreLabel = getTitleCategory(index, book.genre);
+        return (
+          <InteractiveTag 
+            href={bookUrl !== "#" ? bookUrl : undefined} 
+            class={`group relative aspect-[3/4] bg-surface overflow-hidden transition-transform duration-500 block ${bookUrl !== "#" ? "cursor-crosshair" : ""} border border-outline-variant/10`}
+          >
+            <img 
+              src={book.image || ''} 
+              alt={book.title || ''} 
+              loading="lazy" 
+              class="w-full h-full object-cover transition-transform duration-700 grayscale-0 md:grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-0"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90 mix-blend-multiply"></div>
+            {book.suggested && (
+              <div class="absolute top-4 right-4 bg-white text-black px-2 py-1 text-[8px] font-black tracking-[0.2em] uppercase shadow-2xl mix-blend-screen">
+                {book.suggested}
+              </div>
+            )}
+            <div class="absolute bottom-0 p-6 w-full flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <p class="text-[9px] text-secondary tracking-widest uppercase mb-2 font-bold opacity-80 group-hover:opacity-100">{genreLabel}</p>
+              <h4 class="text-xl lg:text-2xl font-headline font-bold text-white uppercase leading-none drop-shadow-md pb-1 text-stroke hover:-webkit-text-stroke-0 hover:text-white transition-all duration-300 selection:bg-transparent">{book.title || 'Untitled'}</h4>
+              <p class="text-[9px] tracking-[0.2em] uppercase text-outline mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{book.author || 'Unknown'}</p>
+            </div>
+          </InteractiveTag>
+        );
+      })}
     </div>
     <div class="mt-16 flex justify-center">
-      <button id="showMoreFinishedButton" class="px-10 py-5 border border-outline-variant text-white text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors focus:outline-none">
+      <button id="showMoreFinishedButton" class="px-10 py-5 border border-outline-variant text-white text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors focus:outline-none" style={finished.length <= 8 ? "display: none" : ""}>
         Expand Archive
       </button>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="px-12 py-16 bg-surface-container-lowest flex flex-col md:flex-row justify-between items-center gap-8 border-t border-outline-variant/15">
-    <div class="order-2 md:order-1">
-      <p class="text-[10px] tracking-[0.4em] uppercase text-[#474747]">©{new Date().getFullYear()} BOOK CLUB. NO RIGHTS RESERVED.</p>
+  <footer class="px-6 md:px-12 py-12 md:py-16 bg-surface-container-lowest flex flex-col md:flex-row justify-between items-center gap-8 border-t border-outline-variant/15">
+    <div class="order-3 md:order-1 text-center md:text-left">
+      <p class="text-[8px] md:text-[10px] tracking-[0.4em] uppercase text-[#474747]">©{new Date().getFullYear()} BOOK CLUB. NO RIGHTS RESERVED.</p>
     </div>
-    <div class="flex gap-12 order-1 md:order-2">
-      <a class="text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Terms</a>
-      <a class="text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Privacy</a>
-      <a class="text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Archive</a>
-      <a class="text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Contact</a>
+    <div class="flex flex-wrap justify-center gap-6 md:gap-12 order-2 md:order-2">
+      <a class="text-[8px] md:text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Terms</a>
+      <a class="text-[8px] md:text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Privacy</a>
+      <a class="text-[8px] md:text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Archive</a>
+      <a class="text-[8px] md:text-[10px] tracking-[0.4em] uppercase text-[#474747] hover:text-white transition-colors" href="#">Contact</a>
     </div>
   </footer>
 </Layout>
 
-<script>
+<script is:inline define:vars={{ initialBooks: booksData }}>
   // @ts-nocheck
   (function init() {
     console.log("Book Club Script initializing...");
-    let isLoading = false;
     let finishedPage = 8;
     let upcomingPage = 8;
-    let allBooks = { currentlyReading: [], upcoming: [], finished: [] };
+    const allBooks = initialBooks || { currentlyReading: [], upcoming: [], finished: [] };
 
     function getTitleCategory(index, genre) {
       const idx = (index + 1).toString().padStart(2, '0');
@@ -124,7 +225,7 @@ import Layout from '../layouts/Layout.astro';
     function getCorrectUrl(url) {
       if (!url || url === "#") return "#";
       if (url.indexOf("reviews/review.html?book=") !== -1) {
-        return "/reviews/" + url.split("?book=")[1];
+        return "/-x.x/reviews/" + url.split("?book=")[1];
       }
       return url;
     }
@@ -158,10 +259,7 @@ import Layout from '../layouts/Layout.astro';
 
     function populateBooks(sectionId, books) {
       const section = document.getElementById(sectionId);
-      if (!section) {
-        console.warn("Section not found: " + sectionId);
-        return;
-      }
+      if (!section) return;
 
       if (books && books.length > 0) {
         section.innerHTML = books.map((b, i) => createBookCard(b, i)).join('');
@@ -192,43 +290,7 @@ import Layout from '../layouts/Layout.astro';
       populateBooks("upcomingShelf", (allBooks.upcoming || []).filter(filterFn).slice(0, upcomingPage));
     }
 
-    function loadBooks() {
-      if (isLoading) return;
-      isLoading = true;
-      console.log("Fetching books.json...");
-
-      fetch("/books.json")
-        .then(res => {
-          if (!res.ok) throw new Error("Fetch failed: " + res.status);
-          return res.json();
-        })
-        .then(data => {
-          console.log("Books loaded successfully", data);
-          allBooks = data;
-          
-          populateBooks("currentlyReading", data.currentlyReading);
-          populateBooks("finished", (data.finished || []).slice(0, finishedPage));
-          
-          const countEl = document.getElementById("finishedCount");
-          if (countEl && data.finished) countEl.innerText = data.finished.length.toString().padStart(2, '0');
-          
-          populateBooks("upcomingShelf", (data.upcoming || []).slice(0, upcomingPage));
-          
-          const moreFinBtn = document.getElementById("showMoreFinishedButton");
-          if (moreFinBtn && data.finished && data.finished.length <= finishedPage) moreFinBtn.style.display = "none";
-          
-          const moreUpBtn = document.getElementById("showMoreUpcomingButton");
-          if (moreUpBtn && data.upcoming && data.upcoming.length <= upcomingPage) moreUpBtn.style.display = "none";
-
-          isLoading = false;
-        })
-        .catch(err => {
-          console.error("Critical Error loading books:", err);
-          isLoading = false;
-        });
-    }
-
-    function showMoreBooks(listKey, stateVar) {
+    function showMoreBooks(listKey) {
       const list = allBooks[listKey] || [];
       if (listKey === 'finished') {
         finishedPage += 8;
@@ -255,19 +317,15 @@ import Layout from '../layouts/Layout.astro';
 
       if (searchInput) searchInput.oninput = searchBooks;
       if (filterSelect) filterSelect.onchange = searchBooks;
-      if (moreFinBtn) moreFinBtn.onclick = () => showMoreBooks('finished', 'finishedPage');
-      if (moreUpBtn) moreUpBtn.onclick = () => showMoreBooks('upcoming', 'upcomingPage');
+      if (moreFinBtn) moreFinBtn.onclick = () => showMoreBooks('finished');
+      if (moreUpBtn) moreUpBtn.onclick = () => showMoreBooks('upcoming');
     }
 
     // Run when ready
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => {
-        attachListeners();
-        loadBooks();
-      });
+      document.addEventListener("DOMContentLoaded", attachListeners);
     } else {
       attachListeners();
-      loadBooks();
     }
   })();
 </script>
